@@ -1,0 +1,13 @@
+.recommended-problems {
+  margin-top: 40px;
+  /* 기존 마진이 약 80px 정도로 보이므로 절반으로 줄임 */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 또는 */
+
+.title-section {
+  margin: 40px 0;
+  /* 상하 마진을 40px로 설정 */
+}
