@@ -486,4 +486,5 @@ if __name__ == '__main__':
     main()
 
 # main()
-print(get_username())
+submit(1000, "lib/code.py")
+# print(get_username())
