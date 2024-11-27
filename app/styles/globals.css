@@ -1,0 +1,497 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+  /* Light gray background */
+  color: black;
+  /* Ensure readable text */
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
+  font-family: Arial, sans-serif;
+  /* Optional: Define font */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 60px;
+  /* Fixed header height */
+}
+
+/* Logo */
+.logo-icon {
+  height: 100px;
+  width: 100px;
+}
+
+/* Menu Icon */
+.menu-icon {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+/* Search Bar Container */
+.search-bar-container {
+  margin-top: 80px;
+  /* Push below the header */
+  padding: 10px 20px;
+  display: flex;
+  background-color: #f4f4f4;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 50px;
+  padding: 5px 10px;
+  width: 300px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+  height: 25px;
+  width: 25px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.search-text {
+  flex-grow: 1;
+  /* Make the input field take up remaining space */
+  color: grey;
+  background-color: white;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.search-text::placeholder {
+  color: grey;
+}
+
+/* Side Menu */
+.menu-panel {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  /* Hidden by default */
+  height: 100%;
+  width: 300px;
+  background-color: #333;
+  color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  transition: right 0.3s ease;
+  /* Smooth sliding effect */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.menu-panel.open {
+  right: 0;
+  /* Slide in when open */
+}
+
+/* Close Button */
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+
+.menu-panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu-panel ul li {
+  margin: 15px 0;
+}
+
+.menu-panel ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.menu-panel ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Spacer */
+.spacer {
+  height: 5px;
+  /* Adjust height as needed */
+}
+
+/* Title Container */
+.title-container {
+  text-align: center;
+  margin: 20px 0 10px 0;
+}
+
+/* Title Style */
+.recommend-title {
+  font-size: 50px;
+  color: #3D435D;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+/* Asterisk Image Style */
+.asterisk-image {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.carousel-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.problem-card {
+  background: #2f3640;
+  padding: 2rem;
+  border-radius: 25px;
+  color: white;
+  width: 400px;
+  height: 220px;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.position-left {
+  transform: translateX(-100%) scale(0.85);
+  z-index: 1;
+}
+
+.position-center {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 2;
+}
+
+.position-right {
+  transform: translateX(100%) scale(0.85);
+  z-index: 1;
+}
+
+.position-outside-left {
+  transform: translateX(-200%) scale(0.85);
+  opacity: 0;
+}
+
+.position-outside-right {
+  transform: translateX(200%) scale(0.85);
+  opacity: 0;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #0984e3;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.prev {
+  left: 5%;
+}
+
+.next {
+  right: 5%;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #dfe6e9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #0984e3;
+  transform: scale(1.2);
+}
+
+/* 추가: 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 1400px) {
+  .problem-card {
+    width: 500px;
+    height: 250px;
+    padding: 2rem;
+  }
+
+  .problem-card h2 {
+    font-size: 3.5rem;
+  }
+
+  .problem-card h3 {
+    font-size: 1.8rem;
+  }
+
+  .problem-card p {
+    font-size: 1.1rem;
+  }
+}
+
+/* 슬라이드 방향 클래스 추가 */
+.sliding-left {
+  transform: translateX(-150%) scale(0.85) !important;
+}
+
+.sliding-right {
+  transform: translateX(150%) scale(0.85) !important;
+}
+
+/* 문제 번호 스타일 */
+.problem-number {
+  font-size: 3.5rem;
+  color: #4CAF50;
+  /* 초록색 */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* 문제 타입 스타일 */
+.problem-type {
+  font-size: 1rem;
+  color: #8b95a1;
+  /* 회색 */
+  margin-bottom: 1rem;
+}
+
+/* 문제 태그 스타일 */
+.problem-tag {
+  font-size: 0.9rem;
+  color: #ffffff;
+  /* 흰색 */
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 파란색 태그 스타일 */
+.tag-blue {
+  color: #0984e3;
+  /* 파란색 */
+}
+
+/* 별표 아이콘 스타일 */
+.star-icon {
+  font-size: 0.8rem;
+  margin-right: 0.2rem;
+}
+
+/* 호버 효과 수정 */
+.problem-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  /* transform 속성 제거 - 기존 위치 유지 */
+}
+
+/* 새로운 검색창 스타일 */
+.bottom-search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.search-title {
+  color: #2c333f;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.bottom-search-bar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 50px;
+  padding: 8px 16px;
+  width: 600px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-search-text {
+  flex-grow: 1;
+  color: #2c333f;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 12px;
+  font-size: 1rem;
+}
+
+.bottom-search-text::placeholder {
+  color: #8b95a1;
+}
+
+.search-button {
+  background-color: #0984e3;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #0873c5;
+}
+
+.search-button .arrow {
+  color: white;
+  font-size: 1rem;
+  margin-left: 5px;
+}
+
+/* 로그인 페이지 스타일 */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 20px;
+  margin-top: 40px;
+  background-color: #f4f4f4;
+}
+
+.login-form {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-title {
+  color: #2c333f;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.login-input:focus {
+  border-color: #0984e3;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0984e3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0873c5;
+}
+
+.login-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.forgot-password,
+.sign-up {
+  color: #0984e3;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover,
+.sign-up:hover {
+  color: #0873c5;
+  text-decoration: underline;
+}
