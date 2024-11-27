@@ -1,5 +1,5 @@
 export default async function page() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/nums`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/python`);
     
     // 응답이 JSON이 아닐 경우 에러 발생 방지
     if (!res.ok) {
@@ -15,7 +15,7 @@ export default async function page() {
 
     return (
         <div>
-            <p>{data.text}</p>
+            <p>{data.output}</p>
         </div>
     );
 }
