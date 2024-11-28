@@ -85,7 +85,6 @@ def get_problemInfo(num):
     problem_title = soup.find('span', {'id': 'problem_title'}).get_text()
     pattern = re.compile(r'^solvedac-tier-name-\d+$')
     problem_difficult = int(str(soup.find('blockquote')).split('"')[-2].split('-')[-1])
-    # problem_difficult = 'blockquote' in str(soup)
     return problem_title, problem_difficult
 
 
@@ -106,7 +105,7 @@ def main(output):
         i["tit"] = tit
         i["dif"] = change2tier(dif)
         new_output["problem_info"].append(i)
-    print({"problem_info": new_output})
+    print(json.dumps(new_output))
 
 
 if __name__ == '__main__':

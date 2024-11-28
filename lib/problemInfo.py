@@ -96,13 +96,15 @@ def get_problemInfo(num):
         if len(problemInfo["I/O_sample"]) < num:
             problemInfo["I/O_sample"].append({})
         problemInfo["I/O_sample"][num-1][i_o] = i.get_text()
+    algorithm = soup.find_all('a', {'class': 'spoiler-link'})
+    problemInfo["algorithmType"] = [i.get_text() for i in algorithm]
     return problemInfo
 
 
 def main(num):
     initialize()
     num = int(num)
-    print(get_problemInfo(num))
+    print(json.dumps(get_problemInfo(num)))
 
 
 if __name__ == '__main__':

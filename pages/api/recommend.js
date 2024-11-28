@@ -50,13 +50,11 @@ export default async function handler(req, res) {
 
                 // 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
                 result.stdout.on('data', function(data) {
-                    console.log(data.toString());
-                    res.status(200).json({ output: data.toString() });
+                    res.status(200).json(JSON.parse(data.toString()));
                 });
 
                 // 4. 에러 발생 시, stderr의 'data'이벤트리스너로 실행결과를 받는다.
                 result.stderr.on('data', function(data) {
-                    console.log(data.toString());
                     res.status(500).json({ error: 'python 실행 중 오류가 발생했습니다.' });
                 });
 

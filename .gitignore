@@ -41,3 +41,5 @@ next-env.d.ts
 
 # boj-cli
 /lib/cookiefile
+
+/public/uploads/
