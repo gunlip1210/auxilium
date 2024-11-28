@@ -1,5 +1,6 @@
 export default async function page() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/problemInfo`);
+    const problemId = 1017;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/problemInfo?problemId=${problemId}`);
     
     // 응답이 JSON이 아닐 경우 에러 발생 방지
     if (!res.ok) {

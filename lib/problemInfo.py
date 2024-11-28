@@ -80,14 +80,22 @@ def load_cookie():
 
 
 def get_problemInfo(num):
-    # load_cookie()
-    problemInfo = {}
+    load_cookie()
+    problemInfo = {"numberOfProblem": num}
     soup = bs(sess.get(boj_url + "/problem/" + str(num)).text, 'html.parser')
-    problemInfo["des"] = soup.find('div', {'id': 'problem_description', 'class': 'problem-text'}).get_text()
-    problemInfo["inp"] = soup.find('div', {'id': 'problem_input', 'class': 'problem-text'}).get_text()
-    problemInfo["out"] = soup.find('div', {'id': 'problem_output', 'class': 'problem-text'}).get_text()
+    problemInfo["nameOfProblem"] = soup.find('span', {'id': 'problem_title'}).get_text()
+    problemInfo["descriptionOfProblem"] = soup.find('div', {'id': 'problem_description', 'class': 'problem-text'}).get_text()
+    problemInfo["inputFormat"] = soup.find('div', {'id': 'problem_input', 'class': 'problem-text'}).get_text()
+    problemInfo["outputFormat"] = soup.find('div', {'id': 'problem_output', 'class': 'problem-text'}).get_text()
     sample = soup.find_all('pre', {'class': "sampledata"})
-    print(sample)
+    problemInfo["I/O_sample"] = []
+    for i in sample:
+        temp = str(i).split('"')[3]
+        num = int(temp.split('-')[-1])
+        i_o = temp.split('-')[1]
+        if len(problemInfo["I/O_sample"]) < num:
+            problemInfo["I/O_sample"].append({})
+        problemInfo["I/O_sample"][num-1][i_o] = i.get_text()
     return problemInfo
 
 
