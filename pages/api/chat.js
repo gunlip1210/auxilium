@@ -1,10 +1,8 @@
-import { Configuration, OpenAIApi } from 'openai';
+import { OpenAI } from 'openai';
 
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, // 환경변수로 API 키 불러오기
 });
-
-const openai = new OpenAIApi(configuration);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -18,17 +16,17 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await openai.createChatCompletion({
-      model: 'gpt-4', // 'gpt-3.5-turbo'도 가능
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4', // 또는 'gpt-3.5-turbo'
       messages,
     });
 
-    const message = response.data.choices[0]?.message?.content || 'No response';
+    const message = response.choices[0]?.message?.content || 'No response';
     res.status(200).json({ message });
   } catch (error) {
-    console.error('Error communicating with OpenAI API:', error.response?.data || error.message);
+    console.error('Error communicating with OpenAI API:', error);
     res.status(500).json({
-      error: error.response?.data || 'Failed to fetch response from OpenAI',
+      error: error.message || 'Failed to fetch response from OpenAI',
     });
   }
 }
