@@ -17,7 +17,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await openai.chat.completions.create({
-      model: 'gpt-4', // 또는 'gpt-3.5-turbo'
+      model: 'gpt-4o',
       messages,
     });
 
