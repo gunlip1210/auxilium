@@ -16,7 +16,7 @@ export default async function page() {
 
     return (
         <div>
-            <p>{data.output.toString()}</p>
+            <p>{data.output}</p>
         </div>
     );
 }

@@ -17,13 +17,14 @@ export default async function handler(req, res) {
         });
 
         let flag = true;
-        while(flag){
+        while (flag) {
             try {
                 // OpenAI API에 질문 보내기
                 const response = await openai.chat.completions.create({
-                    model: 'gpt-4o',  // 사용할 모델
+                    model: 'gpt-4o-mini',  // 사용할 모델
                     messages: [
-                        { role: 'system', content: '너는 백준(온라인 알고리즘 문제 풀이 사이트)에서 사용자에게 적절한 문제를 찾아서 추천해주는 선생님이야. 답변은 항상 json 형식으로 해줘. 경어체를 사용해줘. 짧은 설명은 15자 내외, 추천하는 이유는 길게 써도 괜찮아.\
+                        {
+                            role: 'system', content: '너는 백준(온라인 알고리즘 문제 풀이 사이트)에서 사용자에게 적절한 문제를 찾아서 추천해주는 선생님이야. 답변은 항상 json 형식으로 해줘. 경어체를 사용해줘. 짧은 설명은 15자 내외, 추천하는 이유는 길게 써도 괜찮아.\
                             example -> {"problem_info": [{"num": <백준 문제 번호1>, "des": "<문제에 대한 짧은 설명1>", "res": "<추천하는 이유1>"}, ..., {"num": <백준 문제 번호5>, "des": "<문제에 대한 짧은 설명5>", "res": "<추천하는 이유5>"}]}' },
                         { role: 'user', content: question }
                     ],
@@ -49,16 +50,16 @@ export default async function handler(req, res) {
 
 
                 // 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
-                result.stdout.on('data', function(data) {
+                result.stdout.on('data', function (data) {
                     res.status(200).json(JSON.parse(data.toString()));
                 });
 
                 // 4. 에러 발생 시, stderr의 'data'이벤트리스너로 실행결과를 받는다.
-                result.stderr.on('data', function(data) {
+                result.stderr.on('data', function (data) {
                     res.status(500).json({ error: 'python 실행 중 오류가 발생했습니다.' });
                 });
 
-                
+
                 flag = false;
             } catch (error) {
                 console.log(error)
