@@ -34,19 +34,26 @@
   .username {
     font-size: 1rem;
     color: #ffffff;
+    background: transparent;
     border: none;
+    cursor: pointer;
+    padding: 5px 10px;
     margin-right: 10px;
-    align-items: center;
   }
 
   .logoutButton {
-    background: none;
+    background: transparent;
     border: 1px solid white;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     margin-right: 10px;
     cursor: pointer;
+  }
+
+  .username:hover,
+  .logoutButton:hover {
+    opacity: 0.8;
   }
 
   .menuIcon {

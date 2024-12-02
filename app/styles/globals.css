@@ -588,3 +588,31 @@ html {
   font-weight: bold;
   /* This is gold color - you can change it to any color you prefer */
 }
+
+/* Base transparent button style */
+.transparent-button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+/* Username-specific button style */
+.username.transparent-button {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+/* Logout-specific button style */
+.logout-button.transparent-button {
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin-right: 10px;
+}
+
+.transparent-button:hover {
+  opacity: 0.8;
+}

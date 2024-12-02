@@ -173,12 +173,12 @@ export default function Home() {
         </a>
         <div className="header-right">
           <button
-            className="username"
+            className="username transparent-button"
             onClick={() => window.open(`https://www.acmicpc.net/user/${username}`, '_blank')}
           >
             {username}
           </button>
-          <button className="logout-button" onClick={handleLogout}>logout</button>
+          <button className="logout-button transparent-button" onClick={handleLogout}>logout</button>
           <img
             src="/sideMenu.svg"
             alt="side menu"
