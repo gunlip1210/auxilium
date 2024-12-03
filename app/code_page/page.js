@@ -454,7 +454,7 @@ print(' '.join(list(map(str, answers))))
                               <pre style={{
                                 maxWidth: '100%',
                                 overflow: 'auto',
-                                margin: '10em 0',
+                                margin: '10px 10px',
                                 padding: '4px',
                                 backgroundColor: '#f6f8fa',
                                 borderRadius: '4px'
